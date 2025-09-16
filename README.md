@@ -18,7 +18,7 @@ The final design **simulates successfully in Vivado** and is **fully synthesizab
 
 ---
 
-## 🏗 Block Diagram (Pipeline Stages)  
+##  Block Diagram (Pipeline Stages)  
 
 ### **Stage 1 → Pairwise Adders (8 inputs → 4 sums)**  
 
@@ -46,7 +46,7 @@ The final design **simulates successfully in Vivado** and is **fully synthesizab
 |------------|-----------|--------|----------|
 | `p0_reg + p1_reg` | ➝ | `final_sum` | → `[DFF] → final_sum_reg` |
 
-💡 **Note:** DFFs (pipeline registers) store intermediate results between stages, enabling **new inputs every cycle**.  
+ **Note:** DFFs (pipeline registers) store intermediate results between stages, enabling **new inputs every cycle**.  
 
 ---
 
@@ -66,20 +66,20 @@ The final design **simulates successfully in Vivado** and is **fully synthesizab
 | 75ns |  254 |  254 |  254 |  254 | 252 | 252 |   180 |
 | 85ns |  254 |  254 |  254 |  254 | 252 | 252 |   248 |
 
-✅ **Simulation Completed Successfully**  
+ **Simulation Completed Successfully**  
 
 ---
 
-## 🔑 Key Learnings  
+##  Key Learnings  
 
-- 🚀 **Throughput Improvement** → Pipelining allows overlapping computations.  
-- 📝 **Pipeline Registers (DFFs)** → Store intermediate sums at each stage.  
-- ⏱ **Latency** → The final sum appears after **3 clock cycles**, but new inputs can still be entered every cycle.  
-- 🔄 **Overflow Handling** → Natural wrap-around due to 8-bit arithmetic.  
+-  **Throughput Improvement** → Pipelining allows overlapping computations.  
+-  **Pipeline Registers (DFFs)** → Store intermediate sums at each stage.  
+-  **Latency** → The final sum appears after **3 clock cycles**, but new inputs can still be entered every cycle.  
+-  **Overflow Handling** → Natural wrap-around due to 8-bit arithmetic.  
 
 ---
 
-## 📂 Tools Used  
+##  Tools Used  
 
 - **Xilinx Vivado 2025.1** → Design, simulation, and synthesis  
 - **Verilog HDL** → RTL implementation  
