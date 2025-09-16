@@ -1,17 +1,17 @@
-# ⚡ Pipelined 8-Input Adder Tree  
+# Pipelined 8-Input Adder Tree  
 
 ---
 
-## 📌 Project Overview  
+##  Project Overview  
 
 This project implements a **3-stage pipelined adder tree** to efficiently sum **8 unsigned 8-bit inputs**.  
 Pipelining improves **throughput** by allowing new inputs to be processed every clock cycle, even while previous additions are still in progress.  
 
-✅ The final design **simulates successfully in Vivado** and is **fully synthesizable for FPGA implementation**.  
+The final design **simulates successfully in Vivado** and is **fully synthesizable for FPGA implementation**.  
 
 ---
 
-## 🎯 Objective  
+##  Objective  
 
 - **Without Pipelining** → The next set of inputs must wait until the *entire addition* completes.  
 - **With Pipelining** → New inputs can be processed **every clock cycle**, greatly improving throughput.  
@@ -86,6 +86,3 @@ Pipelining improves **throughput** by allowing new inputs to be processed every 
 - **FPGA** → Target hardware platform  
 
 ---
-
-**Vivado Behavioral Simulation Console Output:**  
-
