@@ -18,32 +18,38 @@ Pipelining improves *throughput* by processing new inputs every clock cycle, eve
 
 ---
 
-## 🧩 Block Diagram (Logical Pipeline Flow)  
+##  Block Diagram (Pipeline Stages)
 
-         Stage 1                Stage 2                Stage 3  
-  ---------------------------------------------------------------  
-  (8 Inputs → 4 Adders)   (4 Partial Sums → 2 Adders)   (Final Adder)  
-    
-   in0 ─┐                        s0_reg ─┐  
-        ├─►[Adder]─► s0 ─►[DFF]──────────┤  
-   in1 ─┘                                │  
-                                         │  
-   in2 ─┐                        s1_reg ─┤  
-        ├─►[Adder]─► s1 ─►[DFF]──────────┤  
-   in3 ─┘                                │  
-                                         │  
-   in4 ─┐                        s2_reg ─┐  
-        ├─►[Adder]─► s2 ─►[DFF]──────────┤  
-   in5 ─┘                                │  
-                                         ▼  
-   in6 ─┐                        s3_reg ─┘      p0_reg ─┐  
-        ├─►[Adder]─► s3 ─►[DFF]──────────┐            ├─►[Adder]─► final_sum_reg  
-   in7 ─┘                                │      p1_reg ─┘  
-                                         ▼  
-                             ┌────────────┴────────────┐  
-                             │   p0 = s0_reg + s1_reg  │  
-                             │   p1 = s2_reg + s3_reg  │  
-                             └─────────────────────────┘  
+### Stage 1 → Pairwise Adders (8 inputs → 4 sums)
+ in0 ─┐       in2 ─┐       in4 ─┐       in6 ─┐
+      ├─►[ + ]     ├─►[ + ]     ├─►[ + ]     ├─►[ + ]
+ in1 ─┘       in3 ─┘       in5 ─┘       in7 ─┘
+      │           │           │           │
+     s0          s1          s2          s3
+      │           │           │           │
+     [DFF]       [DFF]       [DFF]       [DFF]
+
+---
+
+### Stage 2 → Partial Sum Adders (4 sums → 2 sums)
+ s0_reg ─┐                   s2_reg ─┐
+         ├─►[ + ]             ├─►[ + ]
+ s1_reg ─┘                   s3_reg ─┘
+         │                     │
+        p0                    p1
+         │                     │
+        [DFF]                 [DFF]
+
+---
+
+### Stage 3 → Final Adder (2 sums → Final Result)
+ p0_reg ─┐
+         ├─►[ + ]──► final_sum
+ p1_reg ─┘
+         │
+       [DFF]
+         │
+  final_sum_reg
 
 💡 DFFs (pipeline registers) store intermediate results between stages, allowing new inputs every clock cycle.  
 
